@@ -11,6 +11,18 @@ RED="\033[1;31m"
 GREEN="\033[1;32m"
 NOCOLOR="\033[0m"
 
+# Banner
+
+function banner() {
+	clear
+	echo -e "${GREEN}"
+	echo -e " __  __  ____  ____  ____  ___   ___    __    _  _  ____  ____  "
+	echo -e "(  \/  )( ___)( ___)(  _ \/ __) / __)  /__\  ( \( )( ___)(  _ \ "
+	echo -e " )    (  )__)  )__)  )___/\__ \( (__  /(__)\  )  (  )__)  )   / "
+	echo -e "(_/\/\_)(____)(____)(__)  (___/ \___)(__)(__)(_)\_)(____)(_)\_) "                                                                       
+	echo -e "${NOCOLORS}v1.6.2" 
+}
+
 # Internet Connect
 
 function connect() {
