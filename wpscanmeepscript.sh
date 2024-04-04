@@ -70,6 +70,34 @@ function banner() {
 }   
 
 ###
+function menu () {
+    echo "===== Menu ====="
+    echo "1. Update/Upgrade"
+    echo "2. RPI Upgrade"
+    echo "3. Essential"
+    echo "4. Util"
+    echo "5. System"
+    echo "6. Add"
+    echo "7. Remove"
+    echo "0. Exit"
+    read -p "Enter your choice: " option
+
+    case $option in
+        1) Update_upgrade ;;
+        2) RPI_Upgrade ;;
+        3) Essencial ;;
+        4) Util ;;
+        5) Sistema ;;
+        6) Adicionar ;;
+        7) Remover ;;
+        0) echo "Exiting." ; exit 0 ;;
+        *) echo "Invalid option." ;;
+    esac
+}
+
+while true; do
+    menu
+done
 
 
 ###
