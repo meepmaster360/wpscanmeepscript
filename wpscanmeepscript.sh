@@ -189,3 +189,6 @@ for USERNAME in $USERLIST; do
 done
 
 echo "Done."
+
+###
+# need to give option from many distionary e scan global, com todos os dicionarios
