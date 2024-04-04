@@ -55,7 +55,7 @@ function display_menu() {
     echo " [7] Remove User from System"
     echo " [0] Exit"
     echo
-    read -p ">>> Enter your choice: " option
+    read -r-p ">>> Enter your choice: " option
     echo
     
     case $option in
@@ -73,7 +73,7 @@ function display_menu() {
 
 # Function to perform user enumeration
 function user_enum() {
-    read -p "Enter the URL of the website: " website_url
+    read -r -p "Enter the URL of the website: " website_url
 
     # Call the function to check if the website is built with WordPress
     check_wordpress "$website_url"
