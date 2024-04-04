@@ -76,7 +76,34 @@ ${GREEN}
 	esac
 }   
 
+###
 
+# Function to check if a website is built with WordPress
+check_wordpress() {
+    site_url="$1"
+    # Fetch HTML source code of the website
+    html=$(wget -qO- "$site_url")
+    
+    # Check if WordPress specific strings are present in the HTML source
+    if [[ $html =~ "wp-content" || $html =~ "wp-includes" || $html =~ "wp-json" ]]; then
+        echo "The site $site_url is built with WordPress."
+    else
+        echo "The site $site_url does not appear to be built with WordPress."
+    fi
+}
+
+# Main function
+main() {
+    read -p "Enter the URL of the website: " website_url
+
+    # Call the function to check if the website is built with WordPress
+    check_wordpress "$website_url"
+}
+
+# Call the main function
+main
+
+###
 
 # Internet Connect
 
