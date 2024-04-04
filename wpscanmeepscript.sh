@@ -21,7 +21,7 @@ function banner() {
     echo -e " \     / |  |_> >\___ \ \  \___  / __ \_|   |  \|  Y Y  \\  ___/\  ___/ |  |_> > "
     echo -e "  \/\_/  |   __//____  > \___  >(____  /|___|  /|__|_|  / \___  >\___  >|   __/  "
     echo -e "         |__|        \/      \/      \/      \/       \/      \/     \/ |__|     "
-    echo -e "${NOCOLOR}v1.6.2" 
+    echo -e "${NOCOLOR}v1.2.0" 
 }
 
 # Função Menu Principal
