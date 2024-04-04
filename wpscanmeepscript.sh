@@ -25,12 +25,58 @@ function banner() {
 echo -e "${NOCOLORS}v1.6.2" 
 }
 
-${GREEN}"
+${GREEN}
+
 	echo -e " "
 	echo -e " "
 	echo -e " "
 	echo -e " "                                                                       
 	
+
+ function Menu () {
+	# Função Menu Principal
+	clear
+	echo -e "*-*-*- ${GREEN}SCRIP BY MEEPMASTER${NOCOLOR} -*-*-*" 
+	echo
+	echo -e "*-*-*- ${GREEN}UPDATE & UPGRADE${NOCOLOR} -*-*-*" 
+	echo
+	echo
+	echo -e " [1] ${GREEN}Update e Upgrade do Sistema${NOCOLOR} "
+	echo -e " [2] ${GREEN}RPI-Upgrade ${RED}(Só no Raspberry Raspi)${NOCOLOR} "
+	echo -e " [3] ${GREEN}Instalação de Software Essencial${NOCOLOR} "
+	echo -e " [4] ${GREEN}Instalação de Software Útil${NOCOLOR} "
+	echo -e " [5] ${GREEN}Dados do Sistema${NOCOLOR} "
+	echo -e " [6] ${GREEN}Adicionar Usuário ao Sistema${NOCOLOR} "
+	echo -e " [7] ${GREEN}Remover Usuário no Sistema${NOCOLOR} "
+	echo -e " [0] ${GREEN}Sair${NOCOLOR} "
+	echo
+
+	echo -n -e " ${GREEN}>>> Digite a Opção:${NOCOLOR} "
+	read opcao
+	echo
+
+	case $opcao in
+	1) Update_upgrade 
+	;;
+	2) RPI_Upgrade 	
+	;;
+	3) Essencial 
+	;;
+	4) Util
+	;;
+	5) Sistema 
+	;;
+	6) Adicionar 
+	;;
+	7) Remover
+	;;
+	0) Sair 
+	;;
+	*) "Opção Inválida." ; echo ; Menu ;;
+	esac
+}   
+
+
 
 # Internet Connect
 
