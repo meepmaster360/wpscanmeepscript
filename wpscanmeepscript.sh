@@ -4,82 +4,83 @@
 # Date: 06-05-2022
 # Description: WPSCAN SCRIPT 
 
-
 # Color variables 
-
 RED="\033[1;31m"
 GREEN="\033[1;32m"
 NOCOLOR="\033[0m"
 
 # Banner
-
-                                                                                 
 function banner() {
-	clear
-	echo -e "__  _  ________   ______  ____  _____     ____    _____    ____   ____  ______   "
+    clear
+    echo -e "${GREEN}"
+    echo -e "__  _  ________   ______  ____  _____     ____    _____    ____   ____  ______   "
     echo -e "\ \/ \/ /\____ \ /  ___/_/ ___\ \__  \   /    \  /     \ _/ __ \_/ __ \ \____ \  "
     echo -e " \     / |  |_> >\___ \ \  \___  / __ \_|   |  \|  Y Y  \\  ___/\  ___/ |  |_> > "
     echo -e "  \/\_/  |   __//____  > \___  >(____  /|___|  /|__|_|  / \___  >\___  >|   __/  "
     echo -e "         |__|        \/      \/      \/      \/       \/      \/     \/ |__|     "
-                                                                                 
-echo -e "${NOCOLORS}v1.6.2" 
+    echo -e "${NOCOLOR}v1.6.2" 
 }
 
-${GREEN}
+# Function to check internet connection
+function check_internet() {
+    ping -c 1 -w 3 google.com > /dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo -e "\n${RED}[!]${NOCOLOR} ${GREEN}This script requires an active internet connection.${NOCOLOR}"
+        exit 1
+    fi
+}
 
-	echo -e " "
-	echo -e " "
-	echo -e " "
-	echo -e " "                                                                       
-	
+# Function to install necessary applications
+function install_apps() {
+    if ! command -v wpscan &>/dev/null; then
+        echo -e "${RED}[+]${NOCOLOR} ${GREEN}Wpscan not detected... Installing${NOCOLOR}"
+        sudo apt-get install wpscan -y
+    else
+        echo -e "${GREEN}[+]${NOCOLOR} wpscan detected"
+    fi
+}
 
- function Menu () {
-	# Função Menu Principal
-	clear
-	echo -e "*-*-*- ${GREEN}SCRIP BY MEEPMASTER${NOCOLOR} -*-*-*" 
-	echo
-	echo -e "*-*-*- ${GREEN}UPDATE & UPGRADE${NOCOLOR} -*-*-*" 
-	echo
-	echo
-	echo -e " [1] ${GREEN}Update e Upgrade do Sistema${NOCOLOR} "
-	echo -e " [2] ${GREEN}RPI-Upgrade ${RED}(Só no Raspberry Raspi)${NOCOLOR} "
-	echo -e " [3] ${GREEN}Instalação de Software Essencial${NOCOLOR} "
-	echo -e " [4] ${GREEN}Instalação de Software Útil${NOCOLOR} "
-	echo -e " [5] ${GREEN}Dados do Sistema${NOCOLOR} "
-	echo -e " [6] ${GREEN}Adicionar Usuário ao Sistema${NOCOLOR} "
-	echo -e " [7] ${GREEN}Remover Usuário no Sistema${NOCOLOR} "
-	echo -e " [0] ${GREEN}Sair${NOCOLOR} "
-	echo
+# Function to display the main menu
+function display_menu() {
+    clear
+    echo -e "*-*-*- ${GREEN}WPSCAN BY MEEPMASTER${NOCOLOR} -*-*-*"
+    echo -e "*-*-*- ${GREEN}WPSCAN FOR USERS${NOCOLOR} -*-*-*"
+    echo
+    echo " [1] Update and Upgrade System"
+    echo " [2] RPI-Upgrade (Only on Raspberry Pi)"
+    echo " [3] Install Essential Software"
+    echo " [4] Install Useful Software"
+    echo " [5] System Information"
+    echo " [6] Add User to System"
+    echo " [7] Remove User from System"
+    echo " [0] Exit"
+    echo
+    read -p ">>> Enter your choice: " option
+    echo
+    
+    case $option in
+        1) update_upgrade ;;
+        2) rpi_upgrade ;;
+        3) install_essential ;;
+        4) install_useful ;;
+        5) system_info ;;
+        6) add_user ;;
+        7) remove_user ;;
+        0) exit ;;
+        *) echo -e "${RED}Invalid option.${NOCOLOR}" ;;
+    esac
+}
 
-	echo -n -e " ${GREEN}>>> Digite a Opção:${NOCOLOR} "
-	read opcao
-	echo
+# Function to perform user enumeration
+function user_enum() {
+    read -p "Enter the URL of the website: " website_url
 
-	case $opcao in
-	1) Update_upgrade 
-	;;
-	2) RPI_Upgrade 	
-	;;
-	3) Essencial 
-	;;
-	4) Util
-	;;
-	5) Sistema 
-	;;
-	6) Adicionar 
-	;;
-	7) Remover
-	;;
-	0) Sair 
-	;;
-	*) "Opção Inválida." ; echo ; Menu ;;
-	esac
-}   
-
-###
+    # Call the function to check if the website is built with WordPress
+    check_wordpress "$website_url"
+}
 
 # Function to check if a website is built with WordPress
-check_wordpress() {
+function check_wordpress() {
     site_url="$1"
     # Fetch HTML source code of the website
     html=$(wget -qO- "$site_url")
@@ -92,103 +93,54 @@ check_wordpress() {
     fi
 }
 
-# Main function
-main() {
-    read -p "Enter the URL of the website: " website_url
+# Function to update and upgrade the system
+function update_upgrade() {
+    sudo apt-get update && sudo apt-get upgrade -y
+}
 
-    # Call the function to check if the website is built with WordPress
-    check_wordpress "$website_url"
+# Function to perform RPI upgrade (for Raspberry Pi)
+function rpi_upgrade() {
+    # Add RPI upgrade logic here
+    echo "RPI upgrade not implemented yet."
+}
+
+# Function to install essential software
+function install_essential() {
+    # Add installation logic for essential software here
+    echo "Installing essential software..."
+}
+
+# Function to install useful software
+function install_useful() {
+    # Add installation logic for useful software here
+    echo "Installing useful software..."
+}
+
+# Function to display system information
+function system_info() {
+    # Add system information display logic here
+    echo "Displaying system information..."
+}
+
+# Function to add a user to the system
+function add_user() {
+    # Add logic to add user to the system here
+    echo "Adding user to the system..."
+}
+
+# Function to remove a user from the system
+function remove_user() {
+    # Add logic to remove user from the system here
+    echo "Removing user from the system..."
+}
+
+# Main function
+function main() {
+    banner
+    check_internet
+    install_apps
+    display_menu
 }
 
 # Call the main function
 main
-
-###
-
-# Internet Connect
-
-function connect() {
-	ping -c 1 -w 3 google.com > /dev/null 2>&1																
-	if [ "$?" != 0 ];then
-		echo -e "\n${RED}[!]${NOCOLOR} ${GREEN}This script needs an active internet connection!${NOCOLOR}"
-		exit 1
-	fi
-}
-
-function app_install () {
-
-# Nmap installation	
-
-	if [ ! -x "$(command -v wpscan)" ];then																	
-        echo -e "${RED}[+]${NOCOLOR} ${GREEN}Wpscan not detected...Installing${NOCOLOR}"
-        sudo apt-get install wpscan -y > installing;rm installing
-		else
-    	echo -e "\n${GREEN}[+]${NOCOLOR}Nmap detected"
-	fi
-}
-
-function menu () {
-    echo -e ""
-    echo -e "${GREEN}[?]${NOCOLOR} Scan type"
-    echo -e ""
-    echo -e "${GREEN}1${NOCOLOR} Fast Scan"
-    echo -e "${GREEN}2${NOCOLOR} Intense Scan"
-    echo -e ""
-    echo -e "${GREEN}3${NOCOLOR} Check/Install Dependencies"
-    echo -e "${GREEN}4${NOCOLOR} Help"
-    echo -e ""
-	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
-    echo -e ""
-    echo -e "${GREEN} Select one : ${NOCOLOR}\n"
-	read meno;
-    echo -e ""
-    
-    if [ $meno = 1 ]
-    then
-        nmap_ports_open_fast
-    elif [ $meno = 2 ]
-    then
-        nmap_ports_open_intense
-    elif [ $meno = 3 ]
-    then
-        app_install
-    elif [ $meno = 4 ]
-    then
-        help
-	elif [ $meno = 0 ]
-    then
-        banner
-		echo -e "\n${GREEN} Nice to meet you, Bye...${NOCOLOR}\n";sleep 2
-	exit		
-    else
-		banner
-		echo -e "\n${GREEN} Wrong option, Bye...${NOCOLOR}\n";sleep 2
-	exit
-    fi
-
-	menu
-}
-
-# Set the target WordPress URL
-TARGET_URL="http://example.com"
-
-# Set the path to the wordlist containing passwords
-PASSWORDLIST="/path/to/passwordlist.txt"
-
-# Perform user enumeration
-echo "Performing user enumeration..."
-wpscan --url $TARGET_URL --enumerate u > user_enum.txt
-
-# Extract usernames from the user enumeration result
-USERLIST=$(grep 'Username:' user_enum.txt | awk '{print $2}')
-
-# Perform brute force attack for each username
-for USERNAME in $USERLIST; do
-    echo "Performing brute force attack for user: $USERNAME..."
-    wpscan --url $TARGET_URL --passwords $PASSWORDLIST --user $USERNAME --max-threads 50 --disable-tls-checks --max-retries 3 --retry-connrefused --output brute_force_result_$USERNAME.txt
-done
-
-echo "Done."
-
-###
-# need to give option from many distionary e scan global, com todos os dicionarios
