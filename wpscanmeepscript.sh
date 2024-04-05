@@ -97,7 +97,7 @@ function menu () {
     echo -e ""
         case $option in
             1) wpscan_install ;;
-            2) impu ;;
+            2) imput_url ;;
             3) Essencial ;;
             4) Util ;;
             5) Sistema ;;
