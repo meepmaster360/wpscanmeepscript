@@ -71,7 +71,7 @@ function check_wordpress () {
 # Imput Url
 
 function imput_url() {
-    read -e -p "Enter the URL of the website: " website_url
+    read -e -r -p "Enter the URL of the website: " website_url
 
     # Call the function to check if the website is built with WordPress
     check_wordpress "$website_url"
@@ -93,7 +93,7 @@ function menu () {
     echo -e ""
 	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
     echo -e ""
-    read -p -e "${GREEN} Select one : ${NOCOLOR}\n" option
+    read -p -r -e "${GREEN} Select one : ${NOCOLOR}\n" option
     echo -e ""
         case $option in
             1) wpscan_install ;;
