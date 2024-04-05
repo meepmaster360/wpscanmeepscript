@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Author: meepmaster
-# Date: 06-05-2022
+# Date: 06-04-2023
 # Description: WPSCAN SCRIPT 
 
 
