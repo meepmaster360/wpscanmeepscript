@@ -25,6 +25,29 @@ function banner() {
     sleep 2
 }
 
+# Internet Connect
+
+function connect() {
+	ping -c 1 -w 3 google.com > /dev/null 2>&1																
+	if [ "$?" != 0 ];then
+		echo -e "\n${RED}[!]${NOCOLOR} ${GREEN}This script needs an active internet connection!${NOCOLOR}"
+        sleep 2
+		exit 1
+	fi
+}
+
+
+# Wpscan installation
+
+function wpscan_install () {
+	if [ ! -x "$(command -v wpscan)" ];then																	
+        echo -e "${RED}[+]${NOCOLOR} ${GREEN}Wpscan not detected...Installing${NOCOLOR}"
+        sudo apt-get install wpscan -y
+		else
+    	echo -e "\n${GREEN}[+]${NOCOLOR}WPscan detected"
+	fi
+}
+
 # Função Menu Principal
 
 function menu () {
@@ -52,7 +75,7 @@ function menu () {
             *) echo -e "Invalid option." ; menu ;;
         esac
 }  esac
-}
+
 
 while true; do
     menu
@@ -61,55 +84,21 @@ done
 
 ###
 
-# Internet Connect
 
-function connect() {
-	ping -c 1 -w 3 google.com > /dev/null 2>&1																
-	if [ "$?" != 0 ];then
-		echo -e "\n${RED}[!]${NOCOLOR} ${GREEN}This script needs an active internet connection!${NOCOLOR}"
-        sleep 2
-		exit 1
-	fi
-}
 
-function app_install () {
+function wpscan_install () {
 
-# Nmap installation	
+# Wpscan installation	
 
 	if [ ! -x "$(command -v wpscan)" ];then																	
         echo -e "${RED}[+]${NOCOLOR} ${GREEN}Wpscan not detected...Installing${NOCOLOR}"
         sudo apt-get install wpscan -y
 		else
-    	echo -e "\n${GREEN}[+]${NOCOLOR}Nmap detected"
+    	echo -e "\n${GREEN}[+]${NOCOLOR}WPscan detected"
 	fi
 }
 
-function menu () {
-    echo -e ""
-    echo -e "${GREEN}1${NOCOLOR} Chose URL to scan"
-    echo -e "${GREEN}2${NOCOLOR} Chose Wordlist"
-    echo -e ""
-    echo -e "${GREEN}3${NOCOLOR} Check if URL uses Wordpress"
-    echo -e "${GREEN}3${NOCOLOR} Scan and Force Brute with the Users"
-    echo -e "${GREEN}4${NOCOLOR} Help"
-    echo -e ""
-	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
-    echo -e ""
-    read -p -e "${GREEN} Select one : ${NOCOLOR}\n" option
-    echo -e ""
-        case $option in
-            1) Update_upgrade ;;
-            2) RPI_Upgrade ;;
-            3) Essencial ;;
-            4) Util ;;
-            5) Sistema ;;
-            6) Adicionar ;;
-            7) Remover ;;
-            0) echo -e "Exiting." ; exit 0 ;;
-            *) echo -e "Invalid option." ; menu ;;
-        esac
-}
-    
+  
 
 ###
 
@@ -171,9 +160,9 @@ done
 
 banner
 connect
-while true; do
+    while true; do
     menu
-done
+    done
 
 
 ###
