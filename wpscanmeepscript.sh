@@ -22,77 +22,36 @@ function banner() {
     echo -e "  \/\_/  |   __//____  > \___  >(____  /|___|  /|__|_|  / \___  >\___  >|   __/  "
     echo -e "         |__|        \/      \/      \/      \/       \/      \/     \/ |__|     "
     echo -e "${NOCOLOR}v1.2.0" 
+    sleep 2
 }
 
 # Função Menu Principal
 
- function Menu () {
-	
-	clear
-	echo -e "*-*-*- ${GREEN}WPSCAN BY MEEPMASTER${NOCOLOR} -*-*-*" 
-	echo
-	echo -e "*-*-*- ${GREEN}WPSCAN FOR USERS{NOCOLOR} -*-*-*" 
-	echo
-	echo
-	echo -e " [1] ${GREEN}Update e Upgrade do Sistema${NOCOLOR} "
-	echo -e " [2] ${GREEN}RPI-Upgrade ${RED}(Só no Raspberry Raspi)${NOCOLOR} "
-	echo -e " [3] ${GREEN}Instalação de Software Essencial${NOCOLOR} "
-	echo -e " [4] ${GREEN}Instalação de Software Útil${NOCOLOR} "
-	echo -e " [5] ${GREEN}Dados do Sistema${NOCOLOR} "
-	echo -e " [6] ${GREEN}Adicionar Usuário ao Sistema${NOCOLOR} "
-	echo -e " [7] ${GREEN}Remover Usuário no Sistema${NOCOLOR} "
-	echo -e " [0] ${GREEN}Sair${NOCOLOR} "
-	echo
-	echo -n -e " ${GREEN}>>> Digite a Opção:${NOCOLOR} "
-	read opcao
-	echo
-
-	case $opcao in
-	    1) Update_upgrade 
-	    ;;
-	    2) RPI_Upgrade 	
-	    ;;
-	    3) Essencial 
-	    ;;
-	    4) Util
-	    ;;
-	    5) Sistema 
-	    ;;
-	    6) Adicionar 
-	    ;;
-	    7) Remover
-	    ;;
-	    0) Sair 
-	    ;;
-	    *) echo -e "Opção Inválida." ; Menu 
-        ;;
-	esac
-}   
-
-###
 function menu () {
-    echo "===== Menu ====="
-    echo "1. Update/Upgrade"
-    echo "2. RPI Upgrade"
-    echo "3. Essential"
-    echo "4. Util"
-    echo "5. System"
-    echo "6. Add"
-    echo "7. Remove"
-    echo "0. Exit"
-    read -p "Enter your choice: " option
-
-    case $option in
-        1) Update_upgrade ;;
-        2) RPI_Upgrade ;;
-        3) Essencial ;;
-        4) Util ;;
-        5) Sistema ;;
-        6) Adicionar ;;
-        7) Remover ;;
-        0) echo "Exiting." ; exit 0 ;;
-        *) echo "Invalid option." ;;
-    esac
+    echo -e ""
+    echo -e "${GREEN}1${NOCOLOR} Chose URL to scan"
+    echo -e "${GREEN}2${NOCOLOR} Chose Wordlist"
+    echo -e ""
+    echo -e "${GREEN}3${NOCOLOR} Check if URL uses Wordpress"
+    echo -e "${GREEN}3${NOCOLOR} Scan and Force Brute with the Users"
+    echo -e "${GREEN}4${NOCOLOR} Help"
+    echo -e ""
+	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
+    echo -e ""
+    read -p -e "${GREEN} Select one : ${NOCOLOR}\n" option
+    echo -e ""
+        case $option in
+            1) Update_upgrade ;;
+            2) RPI_Upgrade ;;
+            3) Essencial ;;
+            4) Util ;;
+            5) Sistema ;;
+            6) Adicionar ;;
+            7) Remover ;;
+            0) echo -e "Exiting." ; exit 0 ;;
+            *) echo -e "Invalid option." ; menu ;;
+        esac
+}  esac
 }
 
 while true; do
@@ -108,6 +67,7 @@ function connect() {
 	ping -c 1 -w 3 google.com > /dev/null 2>&1																
 	if [ "$?" != 0 ];then
 		echo -e "\n${RED}[!]${NOCOLOR} ${GREEN}This script needs an active internet connection!${NOCOLOR}"
+        sleep 2
 		exit 1
 	fi
 }
@@ -126,45 +86,30 @@ function app_install () {
 
 function menu () {
     echo -e ""
-    echo -e "${GREEN}[?]${NOCOLOR} Scan type"
+    echo -e "${GREEN}1${NOCOLOR} Chose URL to scan"
+    echo -e "${GREEN}2${NOCOLOR} Chose Wordlist"
     echo -e ""
-    echo -e "${GREEN}1${NOCOLOR} Fast Scan"
-    echo -e "${GREEN}2${NOCOLOR} Intense Scan"
-    echo -e ""
-    echo -e "${GREEN}3${NOCOLOR} Check/Install Dependencies"
+    echo -e "${GREEN}3${NOCOLOR} Check if URL uses Wordpress"
+    echo -e "${GREEN}3${NOCOLOR} Scan and Force Brute with the Users"
     echo -e "${GREEN}4${NOCOLOR} Help"
     echo -e ""
 	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
     echo -e ""
-    echo -e "${GREEN} Select one : ${NOCOLOR}\n"
-	read meno;
+    read -p -e "${GREEN} Select one : ${NOCOLOR}\n" option
     echo -e ""
-    
-    if [ $meno = 1 ]
-    then
-        nmap_ports_open_fast
-    elif [ $meno = 2 ]
-    then
-        nmap_ports_open_intense
-    elif [ $meno = 3 ]
-    then
-        app_install
-    elif [ $meno = 4 ]
-    then
-        help
-	elif [ $meno = 0 ]
-    then
-        banner
-		echo -e "\n${GREEN} Nice to meet you, Bye...${NOCOLOR}\n";sleep 2
-	exit		
-    else
-		banner
-		echo -e "\n${GREEN} Wrong option, Bye...${NOCOLOR}\n";sleep 2
-	exit
-    fi
-
-	menu
+        case $option in
+            1) Update_upgrade ;;
+            2) RPI_Upgrade ;;
+            3) Essencial ;;
+            4) Util ;;
+            5) Sistema ;;
+            6) Adicionar ;;
+            7) Remover ;;
+            0) echo -e "Exiting." ; exit 0 ;;
+            *) echo -e "Invalid option." ; menu ;;
+        esac
 }
+    
 
 ###
 
@@ -220,6 +165,14 @@ USERLIST=$(grep 'Username:' user_enum.txt | awk '{print $2}')
 for USERNAME in $USERLIST; do
     echo "Performing brute force attack for user: $USERNAME..."
     wpscan --url "$TARGET_URL" --passwords "$PASSWORDLIST" --user "$USERNAME" --max-threads 50 --disable-tls-checks --max-retries 3 --retry-connrefused --output "brute_force_result_$USERNAME.txt"
+done
+
+# Call Functions
+
+banner
+connect
+while true; do
+    menu
 done
 
 
