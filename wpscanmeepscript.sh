@@ -84,8 +84,8 @@ function menu () {
     echo -e ""
     echo -e "${GREEN}1${NOCOLOR} Check if Wpscan is instaled"
     echo -e ""
-    echo -e "${GREEN}2${NOCOLOR} Chose URL to scan"
-    echo -e "${GREEN}3${NOCOLOR} Chose Wordlist"
+    echo -e "${GREEN}2${NOCOLOR} Choose URL to scan"
+    echo -e "${GREEN}3${NOCOLOR} Choose Wordlist"
     echo -e ""
     echo -e "${GREEN}4${NOCOLOR} Check if URL uses Wordpress"
     echo -e "${GREEN}5${NOCOLOR} Scan and Force Brute with Wordlist for Users"
@@ -98,7 +98,7 @@ function menu () {
         case $option in
             1) wpscan_install ;;
             2) imput_url ;;
-            3)  ;;
+            3) wor;;
             4) check_wordpress "$website_url" ;;
             5) Sistema ;;
             6) Adicionar ;;
@@ -115,15 +115,18 @@ function menu () {
 
 
 # Prompt user to choose a wordlist
-echo "Choose a wordlist from the options below: "
-select FILENAME in $(ls /path/to/wordlists/*.txt); do
-    if [ -n "$FILENAME" ]; then
+
+function wordlist_list () {
+    echo "Choose a wordlist from the options below: "
+    select FILENAME in $(ls /path/to/wordlists/*.txt); do
+        if [ -n "$FILENAME" ]; then
         PASSWORDLIST="$FILENAME"
         break
-    else
+        else
         echo "Invalid selection. Please choose a valid option."
-    fi
-done
+        fi
+    done
+}
 
 # Perform user enumeration
 echo "Performing user enumeration..."
