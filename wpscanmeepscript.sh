@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Author: meepmaster
-# Date: 06-04-2023
+# Date: 06-04-2024
 # Description: WPSCAN SCRIPT 
 
 
@@ -10,6 +10,7 @@
 RED="\033[1;31m"
 GREEN="\033[1;32m"
 NOCOLOR="\033[0m"
+
 
 # Banner
                                                                               
@@ -24,6 +25,7 @@ function banner() {
     echo -e "${NOCOLOR}v1.2.0" 
     sleep 2
 }
+
 
 # Internet Connect
 
@@ -48,18 +50,46 @@ function wpscan_install () {
 	fi
 }
 
+
+# Function to check if a website is built with WordPress
+
+function check_wordpress () {
+    site_url="$1"
+    # Fetch HTML source code of the website
+    html=$(wget -qO- "$site_url")
+    
+    # Check if WordPress specific strings are present in the HTML source
+    if [[ $html =~ "wp-content" || $html =~ "wp-includes" || $html =~ "wp-json" ]]; then
+        echo "The site $site_url is built with WordPress."
+    else
+        echo "The site $site_url does not appear to be built with WordPress."
+    fi
+    sleep 2
+}
+
+
+# Imput Url
+
+function imput_url() {
+    read -e -p "Enter the URL of the website: " website_url
+
+    # Call the function to check if the website is built with WordPress
+    check_wordpress "$website_url"
+}
+
+
 # Função Menu Principal
 
 function menu () {
     echo -e ""
     echo -e "${GREEN}1${NOCOLOR} Check if Wpscan is instaled"
     echo -e ""
-    echo -e "${GREEN}1${NOCOLOR} Chose URL to scan"
-    echo -e "${GREEN}2${NOCOLOR} Chose Wordlist"
+    echo -e "${GREEN}2${NOCOLOR} Chose URL to scan"
+    echo -e "${GREEN}3${NOCOLOR} Chose Wordlist"
     echo -e ""
-    echo -e "${GREEN}3${NOCOLOR} Check if URL uses Wordpress"
-    echo -e "${GREEN}3${NOCOLOR} Scan and Force Brute with Wordlist for Users"
-    echo -e "${GREEN}4${NOCOLOR} Help"
+    echo -e "${GREEN}4${NOCOLOR} Check if URL uses Wordpress"
+    echo -e "${GREEN}5${NOCOLOR} Scan and Force Brute with Wordlist for Users"
+    echo -e "${GREEN}6${NOCOLOR} Help"
     echo -e ""
 	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
     echo -e ""
@@ -67,7 +97,7 @@ function menu () {
     echo -e ""
         case $option in
             1) wpscan_install ;;
-            2) RPI_Upgrade ;;
+            2) impu ;;
             3) Essencial ;;
             4) Util ;;
             5) Sistema ;;
@@ -88,46 +118,10 @@ done
 
 
 
-function wpscan_install () {
-
-# Wpscan installation	
-
-	if [ ! -x "$(command -v wpscan)" ];then																	
-        echo -e "${RED}[+]${NOCOLOR} ${GREEN}Wpscan not detected...Installing${NOCOLOR}"
-        sudo apt-get install wpscan -y
-		else
-    	echo -e "\n${GREEN}[+]${NOCOLOR}WPscan detected"
-	fi
-}
-
-  
 
 ###
 
-# Function to check if a website is built with WordPress
-check_wordpress() {
-    site_url="$1"
-    # Fetch HTML source code of the website
-    html=$(wget -qO- "$site_url")
-    
-    # Check if WordPress specific strings are present in the HTML source
-    if [[ $html =~ "wp-content" || $html =~ "wp-includes" || $html =~ "wp-json" ]]; then
-        echo "The site $site_url is built with WordPress."
-    else
-        echo "The site $site_url does not appear to be built with WordPress."
-    fi
-}
 
-# Main function
-main() {
-    read -p "Enter the URL of the website: " website_url
-
-    # Call the function to check if the website is built with WordPress
-    check_wordpress "$website_url"
-}
-
-# Call the main function
-main
 
 #### 
 
@@ -162,10 +156,11 @@ done
 
 banner
 connect
-    while true; do
-    menu
-    done
+while true; do
+menu
+done
 
+# End of Script
 
 ###
 # need to give option from many distionary e scan global, com todos os dicionarios
