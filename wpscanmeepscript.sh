@@ -52,11 +52,13 @@ function wpscan_install () {
 
 function menu () {
     echo -e ""
+    echo -e "${GREEN}1${NOCOLOR} Check if Wpscan is instaled"
+    echo -e ""
     echo -e "${GREEN}1${NOCOLOR} Chose URL to scan"
     echo -e "${GREEN}2${NOCOLOR} Chose Wordlist"
     echo -e ""
     echo -e "${GREEN}3${NOCOLOR} Check if URL uses Wordpress"
-    echo -e "${GREEN}3${NOCOLOR} Scan and Force Brute with the Users"
+    echo -e "${GREEN}3${NOCOLOR} Scan and Force Brute with Wordlist for Users"
     echo -e "${GREEN}4${NOCOLOR} Help"
     echo -e ""
 	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
@@ -64,7 +66,7 @@ function menu () {
     read -p -e "${GREEN} Select one : ${NOCOLOR}\n" option
     echo -e ""
         case $option in
-            1) Update_upgrade ;;
+            1) wpscan_install ;;
             2) RPI_Upgrade ;;
             3) Essencial ;;
             4) Util ;;
@@ -74,7 +76,7 @@ function menu () {
             0) echo -e "Exiting." ; exit 0 ;;
             *) echo -e "Invalid option." ; menu ;;
         esac
-}  esac
+}  
 
 
 while true; do
