@@ -92,18 +92,29 @@ function wordlist_list () {
     done
 }
 
+
+# Perform user enumeration
+
+function user_enumeration () {
+    echo "Performing user enumeration..."
+    wpscan --url "$website_url" --enumerate u > user_enum.txt
+} 
+
+
+
 # Função Menu Principal
 
 function menu () {
     echo -e ""
     echo -e "${GREEN}1${NOCOLOR} Check if Wpscan is instaled"
     echo -e ""
-    echo -e "${GREEN}2${NOCOLOR} Choose URL to scan"
+    echo -e "${GREEN}2${NOCOLOR} Choose URL to Scan"
     echo -e "${GREEN}3${NOCOLOR} Choose Wordlist"
     echo -e ""
     echo -e "${GREEN}4${NOCOLOR} Check if URL uses Wordpress"
-    echo -e "${GREEN}5${NOCOLOR} Scan and Force Brute with Wordlist for Users"
-    echo -e "${GREEN}6${NOCOLOR} Help"
+    echo -e "${GREEN}5${NOCOLOR} Users Enumeration"
+    echo -e "${GREEN}6${NOCOLOR} Scan and Force Brute with Wordlist for Users"
+    echo -e "${GREEN}7${NOCOLOR} Help"
     echo -e ""
 	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
     echo -e ""
@@ -112,9 +123,9 @@ function menu () {
         case $option in
             1) wpscan_install ;;
             2) imput_url ;;
-            3) wordl;;
+            3) wordlist_list ;;
             4) check_wordpress "$website_url" ;;
-            5) Sistema ;;
+            5) user_enumeration ;;
             6) Adicionar ;;
             7) Remover ;;
             0) echo -e "Exiting." ; exit 0 ;;
@@ -131,11 +142,15 @@ function menu () {
 
 
 # Perform user enumeration
-echo "Performing user enumeration..."
-wpscan --url "$website_url" --enumerate u > user_enum.txt
 
-# Extract usernames from the user enumeration result
-USERLIST=$(grep 'Username:' user_enum.txt | awk '{print $2}')
+function user_enumeration () {
+    echo "Performing user enumeration..."
+    wpscan --url "$website_url" --enumerate u > user_enum.txt
+    # Extract usernames from the user enumeration result
+    USERLIST=$(grep 'Username:' user_enum.txt | awk '{print $2}')
+} 
+
+
 
 # Perform brute force attack for each username
 for USERNAME in $USERLIST; do
