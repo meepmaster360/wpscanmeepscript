@@ -98,8 +98,8 @@ function menu () {
         case $option in
             1) wpscan_install ;;
             2) imput_url ;;
-            3) Essencial ;;
-            4) Util ;;
+            3)  ;;
+            4) check_wordpress "$website_url" ;;
             5) Sistema ;;
             6) Adicionar ;;
             7) Remover ;;
@@ -109,24 +109,10 @@ function menu () {
 }  
 
 
-while true; do
-    menu
-done
-
-
-###
-
-
-
-
-###
-
-
-
 #### 
 
 # Prompt user for WordPress URL
-read -p "Enter the target WordPress URL: " website_url
+
 
 # Prompt user to choose a wordlist
 echo "Choose a wordlist from the options below: "
