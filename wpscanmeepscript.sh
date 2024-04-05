@@ -118,7 +118,7 @@ function app_install () {
 
 	if [ ! -x "$(command -v wpscan)" ];then																	
         echo -e "${RED}[+]${NOCOLOR} ${GREEN}Wpscan not detected...Installing${NOCOLOR}"
-        sudo apt-get install wpscan -y > installing;rm installing
+        sudo apt-get install wpscan -y
 		else
     	echo -e "\n${GREEN}[+]${NOCOLOR}Nmap detected"
 	fi
