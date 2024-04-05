@@ -78,6 +78,20 @@ function imput_url() {
 }
 
 
+# Prompt user to choose a wordlist
+
+function wordlist_list () {
+    echo "Choose a wordlist from the options below: "
+    select FILENAME in $(ls /path/to/wordlists/*.txt); do
+        if [ -n "$FILENAME" ]; then
+        PASSWORDLIST="$FILENAME"
+        break
+        else
+        echo "Invalid selection. Please choose a valid option."
+        fi
+    done
+}
+
 # Função Menu Principal
 
 function menu () {
@@ -98,7 +112,7 @@ function menu () {
         case $option in
             1) wpscan_install ;;
             2) imput_url ;;
-            3) wor;;
+            3) wordl;;
             4) check_wordpress "$website_url" ;;
             5) Sistema ;;
             6) Adicionar ;;
@@ -114,19 +128,7 @@ function menu () {
 # Prompt user for WordPress URL
 
 
-# Prompt user to choose a wordlist
 
-function wordlist_list () {
-    echo "Choose a wordlist from the options below: "
-    select FILENAME in $(ls /path/to/wordlists/*.txt); do
-        if [ -n "$FILENAME" ]; then
-        PASSWORDLIST="$FILENAME"
-        break
-        else
-        echo "Invalid selection. Please choose a valid option."
-        fi
-    done
-}
 
 # Perform user enumeration
 echo "Performing user enumeration..."
