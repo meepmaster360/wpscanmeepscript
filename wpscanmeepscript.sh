@@ -126,7 +126,7 @@ function menu () {
     echo -e ""
 	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
     echo -e ""
-    read -p -r -e "${GREEN} Select one : ${NOCOLOR}\n" option
+    read -p -e "${GREEN} Select one : ${NOCOLOR}\n" option
     echo -e ""
         case $option in
             1) wpscan_install ;;
