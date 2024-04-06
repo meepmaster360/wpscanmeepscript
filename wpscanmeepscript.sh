@@ -17,11 +17,12 @@ NOCOLOR="\033[0m"
 function banner() {
 	clear
 	echo -e "${GREEN}"
-    echo -e "__  _  ________   ______  ____  _____     ____    _____    ____   ____  ______   "
-    echo -e "\ \/ \/ /\____ \ /  ___/_/ ___\ \__  \   /    \  /     \ _/ __ \_/ __ \ \____ \  "
-    echo -e " \     / |  |_> >\___ \ \  \___  / __ \_|   |  \|  Y Y  \\  ___/\  ___/ |  |_> > "
-    echo -e "  \/\_/  |   __//____  > \___  >(____  /|___|  /|__|_|  / \___  >\___  >|   __/  "
-    echo -e "         |__|        \/      \/      \/      \/       \/      \/     \/ |__|     "
+    echo -e " __      ___ __  ___  ___ __ _ _ __  _ __ ___   ___  ___ _ __  "
+    echo -e " \ \ /\ / / '_ \/ __|/ __/ _` | '_ \| '_ ` _ \ / _ \/ _ \ '_ \ "
+    echo -e "  \ V  V /| |_) \__ \ (_| (_| | | | | | | | | |  __/  __/ |_) |"
+    echo -e "   \_/\_/ | .__/|___/\___\__,_|_| |_|_| |_| |_|\___|\___| .__/ "
+    echo -e "          | |                                           | |    "
+    echo -e "          |_|                                           |_|    "
     echo -e "${NOCOLOR}v1.2.0" 
     sleep 2
 }
@@ -82,7 +83,7 @@ function imput_url() {
 
 function wordlist_list () {
     echo "Choose a wordlist from the options below: "
-    select FILENAME in $(ls /wordlist/*.txt); do
+    select FILENAME in $(ls https://github.com/meepmaster360/wpscanmeepscript/blob/main/wordlist/*.txt); do
         if [ -n "$FILENAME" ]; then
         PASSWORDLIST="$FILENAME"
         break
@@ -201,6 +202,10 @@ function help () {
     - Ensure proper authorization before scanning any website or performing any vulnerability assessment.
 COMMENT
 }
+
+### 
+
+             
 
 ###
 # need to give option from many distionary e scan global, com todos os dicionarios
