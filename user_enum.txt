@@ -1,0 +1,2 @@
+
+Scan Aborted: --url Absolute URI missing hierarchical segment: 'http://'

@@ -126,7 +126,7 @@ function menu () {
     echo -e ""
 	echo -e "${GREEN}0${NOCOLOR} Exit/Quit"
     echo -e ""
-    read -p "$(echo -e ${GREEN}' Select one : '${NOCOLOR}'\n')" option
+    read -p "$(echo -e "${GREEN}"' Select one : '"${NOCOLOR}"'\n')" option
     echo -e ""
         case $option in
             1) wpscan_install ;;
@@ -147,8 +147,9 @@ function menu () {
 
 banner
 connect
-menu
-
+while true; do
+    menu
+done
 
 # End of Script
 
