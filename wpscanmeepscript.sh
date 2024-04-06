@@ -153,7 +153,7 @@ done
 
 # End of Script
 function help () {
-<<COMMENT
+: <<COMMENT
     # WordPress Vulnerability Scanner
 
     This script is designed to assist in the identification and potential exploitation of vulnerabilities in WordPress websites. It leverages the WPScan tool, a black box WordPress vulnerability scanner. Below is a detailed explanation of the script functionalities:
