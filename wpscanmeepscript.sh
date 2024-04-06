@@ -82,7 +82,7 @@ function imput_url() {
 
 function wordlist_list () {
     echo "Choose a wordlist from the options below: "
-    select FILENAME in $(ls /path/to/wordlists/*.txt); do
+    select FILENAME in $(ls /wordlist/*.txt); do
         if [ -n "$FILENAME" ]; then
         PASSWORDLIST="$FILENAME"
         break
@@ -152,6 +152,6 @@ menu
 done
 
 # End of Script
-
+wordlist/portuguese_a-z_-_no_special_chars.txt
 ###
 # need to give option from many distionary e scan global, com todos os dicionarios
