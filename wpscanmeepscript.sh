@@ -147,11 +147,10 @@ function menu () {
 
 banner
 connect
-while true; do
 menu
-done
+
 
 # End of Script
-wordlist/portuguese_a-z_-_no_special_chars.txt
+
 ###
 # need to give option from many distionary e scan global, com todos os dicionarios
