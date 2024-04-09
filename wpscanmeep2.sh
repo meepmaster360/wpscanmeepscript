@@ -16,7 +16,7 @@ function user_enumeration() {
     # Check if the wpscan command was successful
     if [ $? -eq 0 ]; then
         # Extract usernames from the user enumeration result
-        USERLIST=$(grep 'Username:' user_enum_tmp.txt | awk '{print $2}')
+        USERLIST=$(grep '[+]' user_enum_tmp.txt | awk '{print $2}')
         
         # Check if any usernames were found
         if [ -n "$USERLIST" ]; then
