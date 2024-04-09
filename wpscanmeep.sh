@@ -7,14 +7,14 @@
 # Imput Url
 
 function imput_url() {
-    read -p "Enter the URL of the website: " website_url
+    read -r -p "Enter the URL of the website: " website_url
 }
 
 # Perform user enumeration
 
 function user_enumeration () {
     echo "Performing user enumeration..."
-    wpscan --wp-content-dir --ignore-main-redirect --url https://$website_url --enumerate u > user_enum.txt
+    wpscan --url https://"$website_url" --enumerate u > user_enum.txt
     # Extract usernames from the user enumeration result
     USERLIST=$(grep 'Username:' user_enum.txt | awk '{print $2}')
 } 
