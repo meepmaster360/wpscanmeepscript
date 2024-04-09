@@ -12,8 +12,8 @@ _______________________________________________________________
        @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
 _______________________________________________________________
 
-[32m[+][0m URL: https://www.evasoes.pt/ [2606:4700:20::681a:9ac]
-[32m[+][0m Started: Tue Apr  9 13:45:56 2024
+[32m[+][0m URL: https://www.evasoes.pt/ [2606:4700:20::681a:8ac]
+[32m[+][0m Started: Tue Apr  9 13:48:33 2024
 
 Interesting Finding(s):
 
@@ -332,10 +332,10 @@ Interesting Finding(s):
 [33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
 [33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
 
-[32m[+][0m Finished: Tue Apr  9 13:46:39 2024
-[32m[+][0m Requests Done: 112
-[32m[+][0m Cached Requests: 10
-[32m[+][0m Data Sent: 49.457 KB
-[32m[+][0m Data Received: 1.598 MB
-[32m[+][0m Memory used: 188.891 MB
-[32m[+][0m Elapsed time: 00:00:42
+[32m[+][0m Finished: Tue Apr  9 13:49:02 2024
+[32m[+][0m Requests Done: 66
+[32m[+][0m Cached Requests: 56
+[32m[+][0m Data Sent: 29.96 KB
+[32m[+][0m Data Received: 366.403 KB
+[32m[+][0m Memory used: 188.527 MB
+[32m[+][0m Elapsed time: 00:00:29
