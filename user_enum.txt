@@ -12,8 +12,8 @@ _______________________________________________________________
        @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
 _______________________________________________________________
 
-[32m[+][0m URL: https://evasoes.pt/ [2606:4700:20::681a:8ac]
-[32m[+][0m Started: Tue Apr  9 13:19:28 2024
+[32m[+][0m URL: https://evasoes.pt/ [2606:4700:20::ac43:4656]
+[32m[+][0m Started: Tue Apr  9 13:22:51 2024
 
 Interesting Finding(s):
 
@@ -21,10 +21,10 @@ Interesting Finding(s):
  | Interesting Entries:
  |  - referrer-policy: no-referrer-when-downgrade
  |  - cf-cache-status: DYNAMIC
- |  - report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=m%2BxPan%2FgE9pLM77RoSjv8CulttpodHFHXMGiINLSyNHKXYNLIfjdJIjUVtJdrH1HLcnqs9pCjtSiMbbW2W0LvcocJV%2BT74%2BE3pvcpgWgka5ZXWjvCotD2k9dapG9BE5WVCVMNKxTyxw%3D"}],"group":"cf-nel","max_age":604800}
+ |  - report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=UoqBFCyS0pn7%2FoLGHYO6UZ5MJnDuZZSWmWAhBUFyIH9q6SiRxCj3tQgrGeGKRcUY%2FLV0CWe6uq54K%2FKbCSaANH864kmdoxHufrfYke98y8hGHsoMHltXYGwrD4MTFHhCf2%2BUz14aiJc%3D"}],"group":"cf-nel","max_age":604800}
  |  - nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
  |  - server: cloudflare
- |  - cf-ray: 871a5f23edd303fd-CDG
+ |  - cf-ray: 871a71e75c58153f-CDG
  | Found By: Headers (Passive Detection)
  | Confidence: 100%
 
@@ -49,7 +49,7 @@ Fingerprinting the version -: |=================================================
  |
  | Version: 4.12.1 (60% confidence)
  | Found By: Body Tag (Passive Detection)
- |  - https://www.evasoes.pt/5785df0.html, Match: 'js-comp-ver-4.12.1'
+ |  - https://www.evasoes.pt/ce81e93.html, Match: 'js-comp-ver-4.12.1'
 
 [32m[+][0m wordpress-seo-premium
  | Location: https://evasoes.pt/--enumerate/plugins/wordpress-seo-premium/
@@ -60,7 +60,7 @@ Fingerprinting the version -: |=================================================
  |
  | Version: 9.1 (60% confidence)
  | Found By: Comment (Passive Detection)
- |  - https://www.evasoes.pt/5785df0.html, Match: 'optimized with the Yoast SEO Premium plugin v9.1 -'
+ |  - https://www.evasoes.pt/ce81e93.html, Match: 'optimized with the Yoast SEO Premium plugin v9.1 -'
 
 [32m[+][0m Enumerating Config Backups (via Passive and Aggressive Methods)
 
@@ -71,10 +71,10 @@ Fingerprinting the version -: |=================================================
 [33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
 [33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
 
-[32m[+][0m Finished: Tue Apr  9 13:20:18 2024
-[32m[+][0m Requests Done: 1224
-[32m[+][0m Cached Requests: 8
-[32m[+][0m Data Sent: 267.823 KB
-[32m[+][0m Data Received: 1.127 MB
-[32m[+][0m Memory used: 223.68 MB
-[32m[+][0m Elapsed time: 00:00:49
+[32m[+][0m Finished: Tue Apr  9 13:23:06 2024
+[32m[+][0m Requests Done: 1181
+[32m[+][0m Cached Requests: 51
+[32m[+][0m Data Sent: 254.875 KB
+[32m[+][0m Data Received: 1.011 MB
+[32m[+][0m Memory used: 233.992 MB
+[32m[+][0m Elapsed time: 00:00:14
