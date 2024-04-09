@@ -12,23 +12,24 @@ _______________________________________________________________
        @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
 _______________________________________________________________
 
-[32m[+][0m URL: https://www.evasoes.pt/ [2606:4700:20::681a:8ac]
-[32m[+][0m Started: Tue Apr  9 13:34:01 2024
+[32m[+][0m URL: https://www.evasoes.pt/ [2606:4700:20::681a:9ac]
+[32m[+][0m Started: Tue Apr  9 13:45:56 2024
 
 Interesting Finding(s):
 
 [32m[+][0m Headers
  | Interesting Entries:
- |  - server-name: AP20
+ |  - server-name: AP19
  |  - access-control-allow-origin: *
  |  - access-control-allow-headers: *
  |  - access-control-allow-methods: HEAD, GET, OPTIONS
  |  - referrer-policy: no-referrer-when-downgrade
  |  - cf-cache-status: DYNAMIC
- |  - report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=J8CUqp3o64SfTKD6sYYHjk%2FOgL7dprO%2FLiYwTWe0EyI9FJqlKptiv3bG9%2BcHPLZlJqI8n0%2FEDFDyt0sQVhZIX9AkBLlicMDJA9rkNeiEllBjutvttn60syiBrxI3JZSJlVTCjkJDGbWzWbQA"}],"group":"cf-nel","max_age":604800}
+ |  - report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=Bx%2FcsLSYS4Jb6S7zM30bm2U2Eq8NRcS%2BAZFN6r5km0Hhnj44MWEE8vdmyBG1DL0c7kiO0iWYGViim28kp0jHqDT2WimfKtrlq5Kq1iWKiMNFfgTCyluELbUhKNQ5gSFfMSAB69g4sd8FWMgo"}],"group":"cf-nel","max_age":604800}, {"endpoints":[{"url":"https:\/\/csp-reporting.cloudflare.com\/cdn-cgi\/script_monitor\/report?m=XrSbckokF.bi2ctNEbWD5OdUSu2uBz1Baa7_aPhvzSk-1712666547-1.0.1.1-YpedvjQQvw4.nNw4E_lHNO.q669dYjTnAFyf2B8XpRkh.XNPFW0o8oZKF6DsiGIq0RfYMJNWX_Ca5IUD2qX9d3OLGH7Pe3.uflwAgiitVFHMU9TzH6y5XhfTr3.WY2RKZGmehkne2eXuHX4.fA4.tQ"}],"group":"cf-csp-endpoint","max_age":86400}
  |  - nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+ |  - content-security-policy-report-only: script-src 'none'; connect-src 'none'; report-uri https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=XrSbckokF.bi2ctNEbWD5OdUSu2uBz1Baa7_aPhvzSk-1712666547-1.0.1.1-YpedvjQQvw4.nNw4E_lHNO.q669dYjTnAFyf2B8XpRkh.XNPFW0o8oZKF6DsiGIq0RfYMJNWX_Ca5IUD2qX9d3OLGH7Pe3.uflwAgiitVFHMU9TzH6y5XhfTr3.WY2RKZGmehkne2eXuHX4.fA4.tQ; report-to cf-csp-endpoint
  |  - server: cloudflare
- |  - cf-ray: 871a8249cefa94fa-LIS
+ |  - cf-ray: 871a93c2493d34b9-LIS
  | Found By: Headers (Passive Detection)
  | Confidence: 100%
 
@@ -331,10 +332,10 @@ Interesting Finding(s):
 [33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
 [33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
 
-[32m[+][0m Finished: Tue Apr  9 13:34:51 2024
+[32m[+][0m Finished: Tue Apr  9 13:46:39 2024
 [32m[+][0m Requests Done: 112
 [32m[+][0m Cached Requests: 10
-[32m[+][0m Data Sent: 49.248 KB
-[32m[+][0m Data Received: 1.597 MB
-[32m[+][0m Memory used: 189.332 MB
-[32m[+][0m Elapsed time: 00:00:49
+[32m[+][0m Data Sent: 49.457 KB
+[32m[+][0m Data Received: 1.598 MB
+[32m[+][0m Memory used: 188.891 MB
+[32m[+][0m Elapsed time: 00:00:42

