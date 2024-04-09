@@ -13,7 +13,7 @@ _______________________________________________________________
 _______________________________________________________________
 
 [32m[+][0m URL: https://evasoes.pt/ [2606:4700:20::ac43:4656]
-[32m[+][0m Started: Tue Apr  9 13:22:51 2024
+[32m[+][0m Started: Tue Apr  9 13:24:35 2024
 
 Interesting Finding(s):
 
@@ -49,7 +49,7 @@ Fingerprinting the version -: |=================================================
  |
  | Version: 4.12.1 (60% confidence)
  | Found By: Body Tag (Passive Detection)
- |  - https://www.evasoes.pt/ce81e93.html, Match: 'js-comp-ver-4.12.1'
+ |  - https://www.evasoes.pt/26a46ec.html, Match: 'js-comp-ver-4.12.1'
 
 [32m[+][0m wordpress-seo-premium
  | Location: https://evasoes.pt/--enumerate/plugins/wordpress-seo-premium/
@@ -60,7 +60,7 @@ Fingerprinting the version -: |=================================================
  |
  | Version: 9.1 (60% confidence)
  | Found By: Comment (Passive Detection)
- |  - https://www.evasoes.pt/ce81e93.html, Match: 'optimized with the Yoast SEO Premium plugin v9.1 -'
+ |  - https://www.evasoes.pt/26a46ec.html, Match: 'optimized with the Yoast SEO Premium plugin v9.1 -'
 
 [32m[+][0m Enumerating Config Backups (via Passive and Aggressive Methods)
 
@@ -71,10 +71,10 @@ Fingerprinting the version -: |=================================================
 [33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
 [33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
 
-[32m[+][0m Finished: Tue Apr  9 13:23:06 2024
-[32m[+][0m Requests Done: 1181
-[32m[+][0m Cached Requests: 51
-[32m[+][0m Data Sent: 254.875 KB
-[32m[+][0m Data Received: 1.011 MB
-[32m[+][0m Memory used: 233.992 MB
-[32m[+][0m Elapsed time: 00:00:14
+[32m[+][0m Finished: Tue Apr  9 13:24:49 2024
+[32m[+][0m Requests Done: 1179
+[32m[+][0m Cached Requests: 53
+[32m[+][0m Data Sent: 254.141 KB
+[32m[+][0m Data Received: 879.341 KB
+[32m[+][0m Memory used: 233.621 MB
+[32m[+][0m Elapsed time: 00:00:13
