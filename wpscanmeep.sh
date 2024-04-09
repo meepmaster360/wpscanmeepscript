@@ -14,7 +14,7 @@ function imput_url() {
 
 function user_enumeration () {
     echo "Performing user enumeration..."
-    wpscan --ignore-main-redirect --url "http://$website_url" --enumerate u > user_enum.txt
+    wpscan --wp-content-dir --ignore-main-redirect --url "http://$website_url" --enumerate u > user_enum.txt
     # Extract usernames from the user enumeration result
     USERLIST=$(grep 'Username:' user_enum.txt | awk '{print $2}')
 } 
