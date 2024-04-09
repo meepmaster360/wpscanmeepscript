@@ -13,4 +13,4 @@ _______________________________________________________________
 _______________________________________________________________
 
 
-Scan Aborted: Unable to identify the wp-content dir, please supply it with --wp-content-dir, use the --scope option or make sure the --url value given is the correct one
+Scan Aborted: The URL supplied redirects to https://www.evasoes.pt/. Use the --ignore-main-redirect option to ignore the redirection and scan the target, or change the --url option value to the redirected URL.
