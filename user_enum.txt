@@ -12,69 +12,329 @@ _______________________________________________________________
        @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
 _______________________________________________________________
 
-[32m[+][0m URL: https://evasoes.pt/ [2606:4700:20::681a:8ac]
-[32m[+][0m Started: Tue Apr  9 13:28:46 2024
+[32m[+][0m URL: https://www.evasoes.pt/ [2606:4700:20::681a:8ac]
+[32m[+][0m Started: Tue Apr  9 13:34:01 2024
 
 Interesting Finding(s):
 
 [32m[+][0m Headers
  | Interesting Entries:
+ |  - server-name: AP20
+ |  - access-control-allow-origin: *
+ |  - access-control-allow-headers: *
+ |  - access-control-allow-methods: HEAD, GET, OPTIONS
  |  - referrer-policy: no-referrer-when-downgrade
  |  - cf-cache-status: DYNAMIC
- |  - report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=UoqBFCyS0pn7%2FoLGHYO6UZ5MJnDuZZSWmWAhBUFyIH9q6SiRxCj3tQgrGeGKRcUY%2FLV0CWe6uq54K%2FKbCSaANH864kmdoxHufrfYke98y8hGHsoMHltXYGwrD4MTFHhCf2%2BUz14aiJc%3D"}],"group":"cf-nel","max_age":604800}
+ |  - report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=J8CUqp3o64SfTKD6sYYHjk%2FOgL7dprO%2FLiYwTWe0EyI9FJqlKptiv3bG9%2BcHPLZlJqI8n0%2FEDFDyt0sQVhZIX9AkBLlicMDJA9rkNeiEllBjutvttn60syiBrxI3JZSJlVTCjkJDGbWzWbQA"}],"group":"cf-nel","max_age":604800}
  |  - nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
  |  - server: cloudflare
- |  - cf-ray: 871a71e75c58153f-CDG
+ |  - cf-ray: 871a8249cefa94fa-LIS
  | Found By: Headers (Passive Detection)
  | Confidence: 100%
 
+[32m[+][0m robots.txt found: https://www.evasoes.pt/robots.txt
+ | Interesting Entries:
+ |  - /wp-admin/
+ |  - /wp-admin/admin-ajax.php
+ | Found By: Robots Txt (Aggressive Detection)
+ | Confidence: 100%
 
-Fingerprinting the version -: |=====================================================================================|
-[34m[i][0m The WordPress version could not be detected.
+[32m[+][0m XML-RPC seems to be enabled: https://www.evasoes.pt/xmlrpc.php
+ | Found By: Link Tag (Passive Detection)
+ | Confidence: 100%
+ | Confirmed By: Direct Access (Aggressive Detection), 100% confidence
+ | References:
+ |  - http://codex.wordpress.org/XML-RPC_Pingback_API
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_ghost_scanner/
+ |  - https://www.rapid7.com/db/modules/auxiliary/dos/http/wordpress_xmlrpc_dos/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_xmlrpc_login/
+ |  - https://www.rapid7.com/db/modules/auxiliary/scanner/http/wordpress_pingback_access/
 
-[34m[i][0m The main theme could not be detected.
+[32m[+][0m WordPress readme found: https://www.evasoes.pt/readme.html
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
 
-[32m[+][0m Enumerating All Plugins (via Passive Methods)
-[32m[+][0m Checking Plugin Versions (via Passive and Aggressive Methods)
+[32m[+][0m This site seems to be a multisite
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 100%
+ | Reference: http://codex.wordpress.org/Glossary#Multisite
 
-[34m[i][0m Plugin(s) Identified:
+[32m[+][0m This site has 'Must Use Plugins': https://www.evasoes.pt/wp-content/mu-plugins/
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 80%
+ | Reference: http://codex.wordpress.org/Must_Use_Plugins
 
-[32m[+][0m js_composer
- | Location: https://evasoes.pt/--enumerate/plugins/js_composer/
- | Last Updated: 2024-02-22T07:52:55.000Z
- | [33m[!][0m The version is out of date, the latest version is 7.5
+[32m[+][0m The external WP-Cron seems to be enabled: https://www.evasoes.pt/wp-cron.php
+ | Found By: Direct Access (Aggressive Detection)
+ | Confidence: 60%
+ | References:
+ |  - https://www.iplocation.net/defend-wordpress-from-ddos
+ |  - https://github.com/wpscanteam/wpscan/issues/1299
+
+[32m[+][0m WordPress version 4.9.9 identified (Insecure, released on 2018-12-13).
+ | Found By: Query Parameter In Install Page (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-includes/css/buttons.min.css?ver=4.9.9
+ |  - https://www.evasoes.pt/wp-admin/css/install.min.css?ver=4.9.9
+ |  - https://www.evasoes.pt/wp-includes/css/dashicons.min.css?ver=4.9.9
+ | Confirmed By: Query Parameter In Upgrade Page (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-includes/css/buttons.min.css?ver=4.9.9
+ |  - https://www.evasoes.pt/wp-admin/css/install.min.css?ver=4.9.9
+
+[32m[+][0m WordPress theme in use: evasoes
+ | Location: https://www.evasoes.pt/wp-content/themes/evasoes/
+ | Readme: https://www.evasoes.pt/wp-content/themes/evasoes/readme.txt
+ | Style URL: https://www.evasoes.pt/wp-content/themes/evasoes/style.css
+ | Style Name: Revista Evasões
+ | Description: A Evasões é uma revista semanal que publica informação relativa a viagens, hotéis, gastronomia ...
+ | Author: Evasões
+ | Author URI: http://www.evasoes.pt
  |
- | Found By: Meta Generator (Passive Detection)
- | Confirmed By: Body Tag (Passive Detection)
+ | Found By: Css Style In Homepage (Passive Detection)
+ | Confirmed By: Css Style In 404 Page (Passive Detection)
  |
- | Version: 4.12.1 (60% confidence)
- | Found By: Body Tag (Passive Detection)
- |  - https://www.evasoes.pt/0a92bd4.html, Match: 'js-comp-ver-4.12.1'
+ | Version: 1.48 (80% confidence)
+ | Found By: Style (Passive Detection)
+ |  - https://www.evasoes.pt/wp-content/themes/evasoes/style.css, Match: 'Version:1.48'
 
-[32m[+][0m wordpress-seo-premium
- | Location: https://evasoes.pt/--enumerate/plugins/wordpress-seo-premium/
- | Last Updated: 2024-04-03T09:47:46.000Z
- | [33m[!][0m The version is out of date, the latest version is 22.4
- |
- | Found By: Comment (Passive Detection)
- |
- | Version: 9.1 (60% confidence)
- | Found By: Comment (Passive Detection)
- |  - https://www.evasoes.pt/0a92bd4.html, Match: 'optimized with the Yoast SEO Premium plugin v9.1 -'
+[32m[+][0m Enumerating Users (via Passive and Aggressive Methods)
 
-[32m[+][0m Enumerating Config Backups (via Passive and Aggressive Methods)
+ Brute Forcing Author IDs -: |======================================================================================|
 
- Checking Config Backups -: |=======================================================================================|
+[34m[i][0m User(s) Identified:
 
-[34m[i][0m No Config Backups Found.
+[32m[+][0m Nuno Cardoso
+ | Found By: Rss Generator (Passive Detection)
+ | Confirmed By: Rss Generator (Aggressive Detection)
+
+[32m[+][0m carinadafonseca
+ | Found By: Rss Generator (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+ |  Rss Generator (Aggressive Detection)
+
+[32m[+][0m anacosta
+ | Found By: Rss Generator (Passive Detection)
+ | Confirmed By:
+ |  Wp Json Api (Aggressive Detection)
+ |   - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+ |  Rss Generator (Aggressive Detection)
+
+[32m[+][0m Fernando Melo
+ | Found By: Rss Generator (Passive Detection)
+ | Confirmed By: Rss Generator (Aggressive Detection)
+
+[32m[+][0m adelinocasas
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m anasantos
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m andrerosa
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m antonioalves
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m brunasousa
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m brunomateu
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m buzilis
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m carlosfvasconcelos
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m claudiaacarvalho
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m danielvidal
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m dmota
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m doramota
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m evasoes
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m fatimacasanova
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m fernandomelo
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m filipegarcia
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m fotografiarevistas
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m franciscoseixascosta
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m joanafragoso
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m joanamagalhaes
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m oliveirinha
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m joaomestre
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m jmguel
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m jorgelopes
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m jorgecribeirinho
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m jorgenunes
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m luisacmarinho
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m lusa
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m molinos
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m marcoalves
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m mariana_albuquerque
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m marlenerendeiro
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m martacastanheira
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m migueljudas
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m nunopopascardoso
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m nunomota
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m patriciacardoso
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m paulferreira
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m picjn
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m pedrolucas
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m rafaelatome
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m renatazenha
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m ricardorodrigues
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m ricardosantos
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m sabinaestreia
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m sarasena
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m sarasilva
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m tiagoguilherme
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m tiagopais
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+
+[32m[+][0m donosdistotudo
+ | Found By: Wp Json Api (Aggressive Detection)
+ |  - https://www.evasoes.pt/wp-json/wp/v2/users/?per_page=100&page=1
+ | Confirmed By:
+ |  Oembed API - Author URL (Aggressive Detection)
+ |   - https://www.evasoes.pt/wp-json/oembed/1.0/embed?url=https://www.evasoes.pt/&format=json
+ |  Author Id Brute Forcing - Author Pattern (Aggressive Detection)
 
 [33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
 [33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
 
-[32m[+][0m Finished: Tue Apr  9 13:28:58 2024
-[32m[+][0m Requests Done: 1181
-[32m[+][0m Cached Requests: 51
-[32m[+][0m Data Sent: 254.513 KB
-[32m[+][0m Data Received: 877.006 KB
-[32m[+][0m Memory used: 236.938 MB
-[32m[+][0m Elapsed time: 00:00:11
+[32m[+][0m Finished: Tue Apr  9 13:34:51 2024
+[32m[+][0m Requests Done: 112
+[32m[+][0m Cached Requests: 10
+[32m[+][0m Data Sent: 49.248 KB
+[32m[+][0m Data Received: 1.597 MB
+[32m[+][0m Memory used: 189.332 MB
+[32m[+][0m Elapsed time: 00:00:49
