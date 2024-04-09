@@ -12,5 +12,69 @@ _______________________________________________________________
        @_WPScan_, @ethicalhack3r, @erwan_lr, @firefart
 _______________________________________________________________
 
+[32m[+][0m URL: https://evasoes.pt/ [2606:4700:20::681a:8ac]
+[32m[+][0m Started: Tue Apr  9 13:28:46 2024
 
-Scan Aborted: The url supplied 'https://j/' seems to be down (Couldn't resolve host name)
+Interesting Finding(s):
+
+[32m[+][0m Headers
+ | Interesting Entries:
+ |  - referrer-policy: no-referrer-when-downgrade
+ |  - cf-cache-status: DYNAMIC
+ |  - report-to: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v4?s=UoqBFCyS0pn7%2FoLGHYO6UZ5MJnDuZZSWmWAhBUFyIH9q6SiRxCj3tQgrGeGKRcUY%2FLV0CWe6uq54K%2FKbCSaANH864kmdoxHufrfYke98y8hGHsoMHltXYGwrD4MTFHhCf2%2BUz14aiJc%3D"}],"group":"cf-nel","max_age":604800}
+ |  - nel: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+ |  - server: cloudflare
+ |  - cf-ray: 871a71e75c58153f-CDG
+ | Found By: Headers (Passive Detection)
+ | Confidence: 100%
+
+
+Fingerprinting the version -: |=====================================================================================|
+[34m[i][0m The WordPress version could not be detected.
+
+[34m[i][0m The main theme could not be detected.
+
+[32m[+][0m Enumerating All Plugins (via Passive Methods)
+[32m[+][0m Checking Plugin Versions (via Passive and Aggressive Methods)
+
+[34m[i][0m Plugin(s) Identified:
+
+[32m[+][0m js_composer
+ | Location: https://evasoes.pt/--enumerate/plugins/js_composer/
+ | Last Updated: 2024-02-22T07:52:55.000Z
+ | [33m[!][0m The version is out of date, the latest version is 7.5
+ |
+ | Found By: Meta Generator (Passive Detection)
+ | Confirmed By: Body Tag (Passive Detection)
+ |
+ | Version: 4.12.1 (60% confidence)
+ | Found By: Body Tag (Passive Detection)
+ |  - https://www.evasoes.pt/0a92bd4.html, Match: 'js-comp-ver-4.12.1'
+
+[32m[+][0m wordpress-seo-premium
+ | Location: https://evasoes.pt/--enumerate/plugins/wordpress-seo-premium/
+ | Last Updated: 2024-04-03T09:47:46.000Z
+ | [33m[!][0m The version is out of date, the latest version is 22.4
+ |
+ | Found By: Comment (Passive Detection)
+ |
+ | Version: 9.1 (60% confidence)
+ | Found By: Comment (Passive Detection)
+ |  - https://www.evasoes.pt/0a92bd4.html, Match: 'optimized with the Yoast SEO Premium plugin v9.1 -'
+
+[32m[+][0m Enumerating Config Backups (via Passive and Aggressive Methods)
+
+ Checking Config Backups -: |=======================================================================================|
+
+[34m[i][0m No Config Backups Found.
+
+[33m[!][0m No WPScan API Token given, as a result vulnerability data has not been output.
+[33m[!][0m You can get a free API token with 25 daily requests by registering at https://wpscan.com/register
+
+[32m[+][0m Finished: Tue Apr  9 13:28:58 2024
+[32m[+][0m Requests Done: 1181
+[32m[+][0m Cached Requests: 51
+[32m[+][0m Data Sent: 254.513 KB
+[32m[+][0m Data Received: 877.006 KB
+[32m[+][0m Memory used: 236.938 MB
+[32m[+][0m Elapsed time: 00:00:11
